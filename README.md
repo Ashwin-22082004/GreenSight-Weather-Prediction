@@ -42,7 +42,8 @@ Whether you're a researcher, student, farmer, or traveler, GreenSight helps you 
 
 | Prediction Page | Dashboard |
 |-----------------|-----------|
-| ![Prediction](![image](https://github.com/user-attachments/assets/a3f51964-2c2d-4357-bf81-6806823dae94)![image](https://github.com/user-attachments/assets/ac5feaa1-b5ba-40ea-8a84-360bf2a270ab)) | ![Dashboard](![image](https://github.com/user-attachments/assets/1cc01e5c-4c8a-4688-ad0f-505d506d8da6)) |
+| ![Prediction](![image](https://github.com/user-attachments/assets/a3f51964-2c2d-4357-bf81-6806823dae94)) | 
+![Dashboard](![image](https://github.com/user-attachments/assets/1cc01e5c-4c8a-4688-ad0f-505d506d8da6)) |
 
 ---
 
