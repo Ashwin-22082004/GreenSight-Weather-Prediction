@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Climate Prediction | Greensight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(270deg, #56ccf2, #2f80ed, #56ccf2);
+            background-size: 600% 600%;
+            animation: gradientShift 10s ease infinite;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        input[type="number"] {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #2f80ed;
+            outline: none;
+        }
+
+        button {
+            background-color: #2f80ed;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #1c6cd4;
+        }
+
+        .result {
+            margin-top: 30px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2f80ed;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .result h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+
+        .result p {
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+            color: #34495e;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .info-box {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌎 Climate Prediction</h1>
+        
+        <div class="info-box">
+            This tool uses a machine learning model trained on climate data to make predictions. 
+            Enter values for temperature (°C), humidity (%), and CO₂ levels (ppm) to receive a prediction.
+        </div>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="temperature">Temperature (°C):</label>
+                <input type="number" name="temperature" id="temperature" step="0.1" placeholder="e.g. 24.5" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="humidity">Humidity (%):</label>
+                <input type="number" name="humidity" id="humidity" min="0" max="100" placeholder="e.g. 45" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="co2">CO₂ Level (ppm):</label>
+                <input type="number" name="co2" id="co2" min="0" placeholder="e.g. 415" required>
+            </div>
+            
+            <button type="submit">Generate Prediction</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result">
+                <h2>Prediction Result</h2>
+                <p>Based on the provided data, the prediction value is: <strong>{{ prediction }}</strong></p>
+            </div>
+        {% endif %}
+
+        <a class="back-link" href="{{ url_for('home') }}">← Back to Home</a>
+    </div>
+</body>
+</html>
